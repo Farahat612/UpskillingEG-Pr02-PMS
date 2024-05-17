@@ -1,7 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
 function Projects() {
   return (
-    <div>Project</div>
+    <>
+      <h1>Projects</h1>
+    </>
   )
 }
 
