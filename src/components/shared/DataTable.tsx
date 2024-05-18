@@ -1,7 +1,7 @@
 import React from "react";
 import { useProjectsContext } from "../../contexts/modules/projects/projectsContext";
 import { useTasksContext } from "../../contexts/modules/tasks/tasksContext";
-
+import { LuChevronsUpDown } from "react-icons/lu";
 import { LoadingScreen } from "./";
 import { Table } from "react-bootstrap";
 
@@ -28,6 +28,7 @@ const DataTable = ({ tableColumns, children }: DataTableProps) => {
               {tableColumns.map((column, index) => (
                 <th key={index} className="align-middle thead-color text-light">
                   {column}
+                  <LuChevronsUpDown className="m-1" fontSize={20} />
                 </th>
               ))}
               <th className="w-10  align-middle thead-color text-light">
