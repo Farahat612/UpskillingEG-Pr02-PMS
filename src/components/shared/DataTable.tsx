@@ -23,17 +23,17 @@ const DataTable = ({ tableColumns, children }: DataTableProps) => {
           hover
           borderless
           responsive
-          className='rounded rounded-5'
+          className=' thead-color  '
         >
-          <thead className='rounded rounded-5'>
-            <tr className='table-secondary h-md rounded rounded-5'>
-              <th className='w-10 align-middle'>#</th>
+          <thead className=' '>
+            <tr className=' h-md '>
+              <th className='w-10 align-middle thead-color text-light'>#</th>
               {tableColumns.map((column, index) => (
-                <th key={index} className='align-middle'>
+                <th key={index} className='align-middle thead-color text-light'>
                   {column}
                 </th>
               ))}
-              <th className='w-10 text-center align-middle'>Actions</th>
+              <th className='w-10  align-middle thead-color text-light'>Actions</th>
             </tr>
           </thead>
           <tbody>{children}</tbody>

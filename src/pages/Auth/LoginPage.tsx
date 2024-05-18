@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { apiPublic } from '../../utils/api'
 import { notify } from '../../utils/notify'
 
-import { Form, InputGroup } from 'react-bootstrap'
+import { Button, Form, InputGroup } from 'react-bootstrap'
 import { FaEye, FaEyeSlash } from 'react-icons/fa'
 import { AuthForm, LoadingSpinner } from '../../components/shared'
 import { useAuthContext } from '../../contexts/global/AuthContext'
@@ -56,7 +56,7 @@ const LoginPage = () => {
             <span className='field-name'>Email</span>
             <Form.Control
               type='text'
-              className='w-100 px-0 pb-3 border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
+              className='w-100 px-0  border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
               placeholder='Enter your E-mail'
               aria-label='Email'
               {...register('email', {
@@ -81,7 +81,7 @@ const LoginPage = () => {
               type={showPassword ? 'text' : 'password'}
               placeholder='Password'
               aria-label='Password'
-              className='w-100 px-0 pb-3 border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
+              className='w-100 px-0  border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
               {...register('password', {
                 required: 'Password is required',
                 pattern: {
@@ -92,13 +92,13 @@ const LoginPage = () => {
                 },
               })}
             />
-            <InputGroup.Text
+            <Button
               className='bg-transparent text-white border-0 position-absolute top-50 end-0 translate-middle-y cursor-pointer'
               onClick={() => setShowPassword(!showPassword)}
               style={{ zIndex: 10 }}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </InputGroup.Text>
+            </Button>
           </InputGroup>
           {errors.password && (
             <div className='alert alert-danger py-1 border-0'>
@@ -108,12 +108,12 @@ const LoginPage = () => {
 
           {/* Regiter Now? & Forgot Password? */}
           <div className='d-flex justify-content-between my-3 '>
-            <Link to='/register' className='text-reset text-decoration-none'>
+            <Link to='/register' className='text-reset text-decoration-none links'>
               Register Now?
             </Link>
             <Link
               to='/forgot-password'
-              className='text-reset text-decoration-none'
+              className='text-reset text-decoration-none links'
             >
               Forgot Password?
             </Link>
