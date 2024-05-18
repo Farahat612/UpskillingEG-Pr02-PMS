@@ -52,7 +52,7 @@ const ForgotPassPage = () => {
           <span className='field-name'>Email</span>
           <Form.Control
             type='text'
-            className='w-100 px-0 pb-3 border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
+            className='w-100 px-0  border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
             placeholder='Enter your E-mail'
             aria-label='Email'
             {...register('email', {
