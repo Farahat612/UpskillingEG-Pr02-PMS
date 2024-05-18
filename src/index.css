@@ -140,11 +140,22 @@ form .field-name {
 }
 
 /* --------------------  Pagination Styles -------------------- */
-/* ---------------------  tHead ---------------------*/
+/* ---------------------  table ---------------------*/
 .thead-color {
   background-color: rgba(49, 89, 81, 0.9) !important;
 }
-/* ---------------------  tHead ---------------------*/
+thead tr th, tbody tr td{
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17.07px;
+}
+@media (max-width: 767px) {
+  thead tr th, tbody tr td{
+    font-size: 11px;
+
+  }
+}
+/* ---------------------  table ---------------------*/
 /* ---------------- Elment and hover -------------------*/
 .links:hover {
   color: #7ABA78 !important;
@@ -157,3 +168,123 @@ button[type="submit"]:hover {
   background-color: #FF9800 !important;
 }
 /* -----------------  Elment and hover ------------------------ */
+
+/* --------------------  Projects Styles --------------------*/
+.projects-container {
+  font-family: "Montserrat", sans-serif;
+}
+.projects-container .header h1 {
+  font-size: 28px;
+  line-height: 34.13px;
+  color: #4F4F4F;
+}
+
+.projects-container .header button {
+  border-radius: 32px;
+  padding: 12px 24px;
+  height: 40px;
+  width: 202px;
+  line-height: 19.5px;
+  color:#FFFFFF ;
+}
+.projects-container .header button:active {
+  color:#FFFFFF ;
+}
+.projects-container .search-icon {
+  margin-top: 0.9rem;
+}
+
+.projects-container input::placeholder{
+  font-size: 14px;
+  line-height: 17.07px;
+  color: #AAAAAA;
+}
+
+@media (max-width: 991px) {
+  .projects-container input.w-25 {
+    width: 40% !important;
+  font-size: 12px;
+  }
+  .projects-container .search-icon {
+    margin-top: 0.7rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .projects-container input.w-25 {
+    width: 50% !important;
+  }
+}
+
+@media (max-width: 475px) {
+  .projects-container input.w-25 {
+    width: 65% !important;
+  }
+}
+
+/* --------------------  Projects Styles --------------------*/
+
+/* --------------------  Delete Modal Styles --------------------*/
+.modal-content .modalTitle {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  color: #494949;
+}
+
+@media(max-width: 576px) {
+  .modal-content .modalTitle{
+      font-size: 18px;
+  }
+}
+
+.btn-close {
+  --bs-btn-close-bg: ''!important;
+}
+.btn-close::before {
+  font-family: "Bootstrap-icons" !important;
+  content: '\F623' !important;
+  font-weight: 400 !important;
+  font-size: 27px;
+  position: relative;
+  top: -10px;
+  left: -5px;
+  color: #CC0000 !important;
+}
+
+.btn-close:focus {
+  box-shadow: none !important;
+}
+
+.modal-header {
+  padding: 1.7rem !important;
+  border-bottom: none !important;
+}
+.modal-content .deleteData p {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 19.36px;
+  color: #49494999;
+}
+
+@media(max-width: 567px) {
+  .modal-content .deleteData p{
+    font-size: 13px;
+  }
+}
+
+.modal-footer {
+  border-top: 3px solid #F7F7F7 !important;
+}
+
+.modal-footer .delete {
+  border: 1px solid #CC0000 !important;
+  border-radius: 8px !important;
+  background-color: transparent !important;
+  color: #CC0000 !important;
+  font-family: "Inter", sans-serif !important;
+  line-height: 19.36px !important;
+}
+
+/* --------------------  Delete Modal Styles --------------------*/

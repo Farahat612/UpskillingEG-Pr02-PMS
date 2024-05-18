@@ -25,6 +25,7 @@ interface State {
   employeeTotalNumberOfPages: number
 }
 
+
 // initial state
 export const initialState: State = {
   projects: [],
@@ -77,7 +78,7 @@ export const projectsReducer = (state: State, action: Action) => {
         managerTotalNumberOfRecords: action.payload.totalNumberOfRecords,
         managerTotalNumberOfPages: action.payload.totalNumberOfPages,
       }
-
+      
     case 'GET_EMPLOYEE_PROJECTS_SUCCESS':
       return {
         ...state,
@@ -169,4 +170,5 @@ export const projectsReducer = (state: State, action: Action) => {
     default:
       return state
   }
+  
 }
