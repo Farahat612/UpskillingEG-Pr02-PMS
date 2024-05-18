@@ -1,3 +1,13 @@
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #ffffff;
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px #23232329;
+}
 /* -------------------- Utility classes -------------------- */
 .cursor-pointer {
   cursor: pointer;
@@ -87,3 +97,21 @@ form .field-name {
   cursor: pointer;
   color: white;
 }
+
+/* ---------------------  tHead ---------------------*/
+.thead-color {
+  background-color: rgba(49, 89, 81, 0.9) !important;
+}
+/* ---------------------  tHead ---------------------*/
+/* ---------------- Elment and hover -------------------*/
+.links:hover {
+  color: #7ABA78 !important;
+}
+a {
+  color: white !important;
+}
+
+button[type="submit"]:hover {
+  background-color: #FF9800 !important;
+}
+/* -----------------  Elment and hover ------------------------ */
