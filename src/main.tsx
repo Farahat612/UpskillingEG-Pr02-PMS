@@ -9,13 +9,16 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import AuthProvider from './contexts/global/AuthContext'
 import ProjectsProvider from './contexts/modules/projects/projectsContext'
 import TasksProvider from './contexts/modules/tasks/tasksContext'
+import ListsForFormsProvider from './contexts/global/ListsForForms'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>
       <ProjectsProvider>
         <TasksProvider>
-          <App />
+          <ListsForFormsProvider>
+            <App />
+          </ListsForFormsProvider>
         </TasksProvider>
       </ProjectsProvider>
     </AuthProvider>
