@@ -1,52 +1,52 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useEffect } from 'react'
-import { useProjectsContext } from '../../contexts/modules/projects/projectsContext'
-import useProjectsOperations from '../../contexts/modules/projects/projectsOperations'
+import { useEffect } from "react";
+import { useProjectsContext } from "../../contexts/modules/projects/projectsContext";
+import useProjectsOperations from "../../contexts/modules/projects/projectsOperations";
 import {
   CustomPagination,
   DataTable,
   LoadingScreen,
-} from '../../components/shared'
+} from "../../components/shared";
 // icons
-import { CiEdit, CiSearch } from 'react-icons/ci'
-import { MdDeleteOutline } from 'react-icons/md'
+import { CiEdit, CiSearch } from "react-icons/ci";
+import { MdDeleteOutline } from "react-icons/md";
 
 function Projects() {
   const {
     getManagerProjects,
     setManagerProjectsPagination,
     setManagerProjectsTitleFilter,
-  } = useProjectsOperations()
-  const { state: projectsState } = useProjectsContext()
+  } = useProjectsOperations();
+  const { state: projectsState } = useProjectsContext();
   useEffect(() => {
     getManagerProjects(
       projectsState.managerPageNumber,
       projectsState.managerPageSize,
       projectsState.managerTitle
-    )
+    );
   }, [
     projectsState.managerPageNumber,
     projectsState.managerPageSize,
     projectsState.managerTitle,
-  ])
+  ]);
 
-  const columns = ['Title', 'Description', 'DreationDate']
+  const columns = ["Title", "Description", "DreationDate"];
   return (
     <>
-      <div className='header d-flex justify-content-between align-items-center p-4 bg-white pb-5'>
+      <div className="header d-flex justify-content-between align-items-center p-4 bg-white pb-5">
         <h1>Projects</h1>
-        <button className='btn  submit-btn w-25 h-25 rounded-4 text-white'>
+        <button className="btn  submit-btn w-25 h-25 rounded-4 text-white">
           + Add New Project
         </button>
       </div>
-      <div className=' bg-white col-10  col-md-8 col-lg-11 me-auto ms-auto shadow-lg mt-5 p-4 rounded-3'>
-        <div className=' position-relative'>
-          <CiSearch className=' position-absolute mt-3 ms-2' />
+      <div className=" bg-white col-10  col-md-8 col-lg-11 me-auto ms-auto shadow-lg mt-5 p-4 rounded-3">
+        <div className=" position-relative">
+          <CiSearch className=" position-absolute mt-3 ms-2" />
           <input
-            type='text'
-            className=' rounded-4 p-2 ps-5 form-check-input w-25 h-100 mb-5'
-            placeholder='Search By Title'
+            type="text"
+            className=" rounded-4 p-2 ps-5 form-check-input w-25 h-100 mb-5"
+            placeholder="Search By Title"
             onChange={(e) => setManagerProjectsTitleFilter(e.target.value)}
           />
         </div>
@@ -61,14 +61,14 @@ function Projects() {
                   <th>{project.title}</th>
                   <th>{project.description}</th>
                   <th>{new Date(project.creationDate).toLocaleDateString()}</th>
-                  <th className=''>
+                  <th className="">
                     <CiEdit
                       fontSize={30}
-                      className='text-warning cursor-pointer'
+                      className="text-warning cursor-pointer"
                     />
                     <MdDeleteOutline
                       fontSize={30}
-                      className='text-danger cursor-pointer'
+                      className="text-danger cursor-pointer"
                     />
                   </th>
                 </tr>
@@ -84,11 +84,11 @@ function Projects() {
             setPagination={setManagerProjectsPagination}
           />
         ) : (
-          ''
+          ""
         )}
       </div>
     </>
-  )
+  );
 }
 
-export default Projects
+export default Projects;
