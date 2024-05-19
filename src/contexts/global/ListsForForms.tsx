@@ -1,6 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from 'react'
 import { apiProtected } from '../../utils/api'
+
+
+export type ListsForFormsContextType = {
+  allProjects: any[]
+  allUsers: any[]
+}
+
 
 export const ListsForFormsContext = createContext({})
 
@@ -58,5 +66,5 @@ const ListsForFormsProvider = ({ children }: { children: React.ReactNode }) => {
 export default ListsForFormsProvider
 
 export const useListsForForms = () => {
-  return useContext(ListsForFormsContext)
+  return useContext(ListsForFormsContext) as ListsForFormsContextType
 }

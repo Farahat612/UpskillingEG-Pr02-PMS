@@ -64,7 +64,7 @@ const useProjectsOperations = () => {
   }
 
   // 2. Get project by ID
-  const getProjectById = async (id: number) => {
+  const getProjectById = async (id: string) => {
     try {
       dispatch({ type: 'SET_LOADING', payload: true })
       const response = await apiProtected.get(`/Project/${id}`)

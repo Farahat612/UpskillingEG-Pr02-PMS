@@ -11,6 +11,8 @@ import {
 // icons
 import { CiEdit, CiSearch } from 'react-icons/ci'
 import { MdDeleteOutline } from 'react-icons/md'
+import { FaEye } from "react-icons/fa";
+import { Link } from 'react-router-dom'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import deleteAvatar from '../../assets/images/no-data.png'
@@ -87,13 +89,18 @@ function Projects() {
                   <td className=' text-break'>{project.description}</td>
                   <td>{new Date(project.creationDate).toLocaleDateString()}</td>
                   <td className=''>
+                  <Link to={`/dashboard/projectde/${project.id}`}>
+                    <FaEye
+                      fontSize={20}
+                      className='text-info cursor-pointer mx-1 mb-2 mb-sm-0'
+                    /></Link>
                     <CiEdit
                       fontSize={20}
-                      className='text-warning cursor-pointer ms-1 mb-2 mb-sm-0'
+                      className='text-warning cursor-pointer mx-1 mb-2 mb-sm-0'
                     />
                     <MdDeleteOutline
                       fontSize={20}
-                      className='text-danger cursor-pointer ms-1'
+                      className='text-danger cursor-pointer mx-1 '
                       onClick={()=> handleDeleteShow(project.id)}
                     />
                   </td>
