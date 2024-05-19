@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { Button, Form, InputGroup } from 'react-bootstrap'
+import { Form, InputGroup } from 'react-bootstrap'
 import AuthLayout from '../../layouts/AuthLayout'
 import { useForm } from 'react-hook-form'
 import { AuthForm, LoadingSpinner } from '../../components/shared'
@@ -203,13 +203,13 @@ const RegisterPage = () => {
                     },
                   })}
                 />
-                <Button
+                <InputGroup.Text
                   className='bg-transparent text-white border-0 position-absolute top-50 end-0 translate-middle-y cursor-pointer'
                   onClick={() => setShowPassword(!showPassword)}
                   style={{ zIndex: 10 }}
                 >
                   {showPassword ? <FaEyeSlash /> : <FaEye />}
-                </Button>
+                </InputGroup.Text>
               </InputGroup>
               {errors.password && (
                 <div className='alert alert-danger py-1 border-0'>
@@ -235,13 +235,13 @@ const RegisterPage = () => {
                       'The passwords do not match',
                   })}
                 />
-                <Button
+                <InputGroup.Text
                   className='bg-transparent text-white border-0 position-absolute top-50 end-0 translate-middle-y cursor-pointer'
                   onClick={() => setShowConfirmPassword(!showConfirmPassword)}
                   style={{ zIndex: 10 }}
                 >
-                  {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-                </Button>
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </InputGroup.Text>
               </InputGroup>
               {errors.confirmPassword && (
                 <div className='alert alert-danger py-1 border-0'>
@@ -266,7 +266,7 @@ const RegisterPage = () => {
           {/* Already have an account? */}
           <div className='d-flex justify-content-center gap-2 my-3 '>
             <span>Already have an account?</span>
-            <Link to='/login' className='text-reset text-decoration-none links'>
+            <Link to='/login' className='text-reset text-decoration-none'>
               <span className='text-main'>Login</span>
             </Link>
           </div>

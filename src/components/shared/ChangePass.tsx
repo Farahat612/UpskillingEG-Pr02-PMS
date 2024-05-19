@@ -54,18 +54,18 @@ const ChangePass = ({ handleClose }: { handleClose: () => void }) => {
             type={showOldPassword ? 'text' : 'password'}
             placeholder='Enter Your old Password'
             aria-label='oldPassword'
-            className='w-100 px-0  border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
+            className='w-100 px-0 pb-3 border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
             {...register('oldPassword', {
               required: 'oldPassword is required',
             })}
           />
-          <button
+          <InputGroup.Text
             className='bg-transparent text-white border-0 position-absolute top-50 end-0 translate-middle-y cursor-pointer'
             onClick={() => setShowoldPassword(!showOldPassword)}
             style={{ zIndex: 10 }}
           >
             {showOldPassword ? <FaEyeSlash /> : <FaEye />}
-          </button>
+          </InputGroup.Text>
         </InputGroup>
         {errors.oldPassword && (
           <div className='alert alert-danger py-1 border-0'>
@@ -79,18 +79,18 @@ const ChangePass = ({ handleClose }: { handleClose: () => void }) => {
             type={showNewPassword ? 'text' : 'password'}
             placeholder='Enter Your New Password'
             aria-label='Password'
-            className='w-100 px-0  border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
+            className='w-100 px-0 pb-3 border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
             {...register('newPassword', {
               required: 'newPassword is required',
             })}
           />
-          <button
+          <InputGroup.Text
             className='bg-transparent text-white border-0 position-absolute top-50 end-0 translate-middle-y cursor-pointer'
             onClick={() => setShowNewPassword(!showNewPassword)}
             style={{ zIndex: 10 }}
           >
             {showNewPassword ? <FaEyeSlash /> : <FaEye />}
-          </button>
+          </InputGroup.Text>
         </InputGroup>
         {errors.newPassword && (
           <div className='alert alert-danger py-1 border-0'>
@@ -106,7 +106,7 @@ const ChangePass = ({ handleClose }: { handleClose: () => void }) => {
             type={showConfirmPassword ? 'text' : 'password'}
             placeholder='Enter Your New Password Again'
             aria-label='Password'
-            className='w-100 px-0  border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
+            className='w-100 px-0 pb-3 border-0 border-bottom border-bottom-primary rounded-0 bg-transparent'
             {...register('confirmNewPassword', {
               required: 'confirmNewPassword is required',
               validate: (value: string) => {
@@ -116,13 +116,13 @@ const ChangePass = ({ handleClose }: { handleClose: () => void }) => {
               },
             })}
           />
-          <button
+          <InputGroup.Text
             className='bg-transparent text-white border-0 position-absolute top-50 end-0 translate-middle-y cursor-pointer'
             onClick={() => setShowConfirmPassword(!showConfirmPassword)}
             style={{ zIndex: 10 }}
           >
             {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
-          </button>
+          </InputGroup.Text>
         </InputGroup>
         {errors.confirmNewPassword && (
           <div className='alert alert-danger py-1 border-0'>

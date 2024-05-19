@@ -1,8 +1,7 @@
-import { createContext, useContext, useState } from 'react'
+import { createContext, useState } from 'react'
 import { jwtDecode } from 'jwt-decode'
 
 export type AuthContextType = {
-  userData: Record<string, string>
   loggedIn: boolean
   loading: boolean
   saveLoginData: () => void
@@ -12,7 +11,6 @@ export type AuthContextType = {
 export const AuthContext = createContext<AuthContextType | null>(null)
 
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
-  const [userData, setUserData] = useState({})
   const [loggedIn, setIsLoggedIn] = useState(false)
   const [loading, setLoading] = useState(false)
 
@@ -23,10 +21,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       const decodedToken = jwtDecode(token)
       if (decodedToken) {
         setIsLoggedIn(true)
-        setUserData(decodedToken)
       } else {
         setIsLoggedIn(false)
-        setUserData(false)
       }
     }
     setLoading(false)
@@ -40,7 +36,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
   return (
     <AuthContext.Provider
       value={{
-        userData,
         loggedIn,
         loading,
         saveLoginData,
@@ -50,15 +45,6 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
       {children}
     </AuthContext.Provider>
   )
-}
-
-// eslint-disable-next-line react-refresh/only-export-components
-export const useAuthContext = () => {
-  const context = useContext(AuthContext)
-  if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider')
-  }
-  return context
 }
 
 export default AuthProvider
