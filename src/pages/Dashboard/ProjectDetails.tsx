@@ -91,7 +91,7 @@ function ProjectDetails() {
               <Card.Body>
                 <Card.Title>Card Title</Card.Title>
                 <Card.Subtitle className='mb-2 text-muted'>
-                 {projectsState.selectedProject.task[0].title}
+                {projectsState.selectedProject.task[0].title}
                 </Card.Subtitle>
                 <Card.Text>
                 {projectsState.selectedProject.task[0].status}
