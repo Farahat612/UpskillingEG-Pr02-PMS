@@ -1,79 +1,56 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 
-import { useEffect, useState } from 'react'
-import { useProjectsContext } from '../../contexts/modules/projects/projectsContext'
-import useProjectsOperations from '../../contexts/modules/projects/projectsOperations'
+import { useEffect } from "react";
+import { useProjectsContext } from "../../contexts/modules/projects/projectsContext";
+import useProjectsOperations from "../../contexts/modules/projects/projectsOperations";
 import {
   CustomPagination,
   DataTable,
   LoadingScreen,
-} from '../../components/shared'
+} from "../../components/shared";
 // icons
+
 import { CiEdit, CiSearch } from 'react-icons/ci'
 import { MdDeleteOutline } from 'react-icons/md'
 import { FaEye } from "react-icons/fa";
 import { Link } from 'react-router-dom'
-import Button from 'react-bootstrap/Button'
-import Modal from 'react-bootstrap/Modal'
-import deleteAvatar from '../../assets/images/no-data.png'
-
-
-
 
 
 function Projects() {
-  const [showDelete, setShowDelete] = useState(false);
-  const[projectsMangerId, setProjectsMangerId] = useState(0);
-  
   const {
     getManagerProjects,
     setManagerProjectsPagination,
     setManagerProjectsTitleFilter,
-    deleteProject
-  } = useProjectsOperations()
-  const { state: projectsState } = useProjectsContext()
+  } = useProjectsOperations();
+  const { state: projectsState } = useProjectsContext();
   useEffect(() => {
     getManagerProjects(
       projectsState.managerPageNumber,
       projectsState.managerPageSize,
       projectsState.managerTitle
-    )
+    );
   }, [
     projectsState.managerPageNumber,
     projectsState.managerPageSize,
     projectsState.managerTitle,
-  ])
+  ]);
 
-  const handleDeleteClose = () => setShowDelete(false);
-  const handleDeleteShow = (id: number) =>{
-    setProjectsMangerId(id);
-    setShowDelete(true);
-    }
-
-
-
-  const columns = ['Title', 'Description', 'DreationDate']
+  const columns = ["Title", "Description", "DreationDate"];
   return (
-    <div className='projects-container'>
-      <div className='header p-sm-4 p-3 bg-white pb-5 '>
-        <div className="row">
-          <div className="col-md-6">
-          <h1>Projects</h1>
-          </div>
-          <div className="col-md-6 d-flex justify-content-end">
-          <button className='btn submit-btn'>
+    <>
+      <div className="header d-flex justify-content-between align-items-center p-4 bg-white pb-5">
+        <h1>Projects</h1>
+        <button className="btn  submit-btn w-25 h-25 rounded-4 text-white">
           + Add New Project
         </button>
-          </div>
-        </div>
       </div>
-      <div className='bg-white col-11 col-md-8 col-lg-11 me-auto ms-auto shadow-lg mt-5 rounded-3'>
-        <div className=' position-relative p-4'>
-          <CiSearch className=' search-icon position-absolute ms-2' />
+      <div className=" bg-white col-10  col-md-8 col-lg-11 me-auto ms-auto shadow-lg mt-5 p-4 rounded-3">
+        <div className=" position-relative">
+          <CiSearch className=" position-absolute mt-3 ms-2" />
           <input
-            type='text'
-            className=' rounded-4 p-2 ps-5 form-check-input w-25 h-100 mb-5'
-            placeholder='Search By Title'
+            type="text"
+            className=" rounded-4 p-2 ps-5 form-check-input w-25 h-100 mb-5"
+            placeholder="Search By Title"
             onChange={(e) => setManagerProjectsTitleFilter(e.target.value)}
           />
         </div>
@@ -83,27 +60,28 @@ function Projects() {
               {projectsState.loading ? (
                 <LoadingScreen />
               ) : (
-                <tr key={project.id}>
-                  <td>{++index}</td>
-                  <td>{project.title}</td>
-                  <td className=' text-break'>{project.description}</td>
-                  <td>{new Date(project.creationDate).toLocaleDateString()}</td>
-                  <td className=''>
-                  <Link to={`/dashboard/projectde/${project.id}`}>
-                    <FaEye
-                      fontSize={20}
-                      className='text-info cursor-pointer mx-1 mb-2 mb-sm-0'
-                    /></Link>
+                <tr key={index}>
+                  <th>{++index}</th>
+                  <th>{project.title}</th>
+                  <th>{project.description}</th>
+                  <th>{new Date(project.creationDate).toLocaleDateString()}</th>
+
+                  <th className=' d-flex justify-content-around '>
                     <CiEdit
-                      fontSize={20}
-                      className='text-warning cursor-pointer mx-1 mb-2 mb-sm-0'
+                      fontSize={24}
+                      className='text-warning cursor-pointer'
                     />
                     <MdDeleteOutline
-                      fontSize={20}
-                      className='text-danger cursor-pointer mx-1 '
-                      onClick={()=> handleDeleteShow(project.id)}
+                      fontSize={24}
+                      className='text-danger cursor-pointer'
+
                     />
-                  </td>
+                    <Link to={`/dashboard/projectde/${project.id}`}>
+                    <FaEye
+                      fontSize={24}
+                      className='text-info cursor-pointer'
+                    /></Link>
+                  </th>
                 </tr>
               )}
             </>
@@ -117,27 +95,11 @@ function Projects() {
             setPagination={setManagerProjectsPagination}
           />
         ) : (
-          ''
+          ""
         )}
       </div>
-      <Modal show={showDelete} onHide={handleDeleteClose}>
-        <Modal.Header closeButton>
-          <h3 className='modalTitle'>Delete Project</h3>
-        </Modal.Header>
-        <Modal.Body>
-        <div className='text-center deleteData'>
-            <img src={deleteAvatar} className='img-fluid mb-3' alt="delete Avatar" />
-            <h5 className='mb-2'>Delete This Project ?</h5>
-            <p>are you sure you want to delete this item ? if you are sure just click on delete it</p>
-        </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="danger" onClick={()=> {deleteProject(projectsMangerId), handleDeleteClose()}} className='delete'>Delete this item
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </div>
-  )
+    </>
+  );
 }
 
-export default Projects
+export default Projects;

@@ -21,16 +21,10 @@ const DataTable = ({ tableColumns, children }: DataTableProps) => {
           <LoadingScreen />
         </div>
       ) : (
-        <Table
-          striped
-          hover
-          borderless
-          responsive
-          className=' thead-color  '
-        >
-          <thead className=' '>
-            <tr className=' h-md '>
-              <th className='w-10 align-middle thead-color text-light'>#</th>
+        <Table striped hover borderless responsive className=" thead-color  ">
+          <thead className=" ">
+            <tr className=" h-md ">
+              <th className="w-10 align-middle thead-color text-light">#</th>
               {tableColumns.map((column, index) => (
                 <th key={index} className="align-middle thead-color text-light">
                   {column}
