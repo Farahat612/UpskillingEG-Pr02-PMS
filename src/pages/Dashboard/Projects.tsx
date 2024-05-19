@@ -9,8 +9,12 @@ import {
   LoadingScreen,
 } from "../../components/shared";
 // icons
-import { CiEdit, CiSearch } from "react-icons/ci";
-import { MdDeleteOutline } from "react-icons/md";
+
+import { CiEdit, CiSearch } from 'react-icons/ci'
+import { MdDeleteOutline } from 'react-icons/md'
+import { FaEye } from "react-icons/fa";
+import { Link } from 'react-router-dom'
+
 
 function Projects() {
   const {
@@ -56,20 +60,27 @@ function Projects() {
               {projectsState.loading ? (
                 <LoadingScreen />
               ) : (
-                <tr>
+                <tr key={index}>
                   <th>{++index}</th>
                   <th>{project.title}</th>
                   <th>{project.description}</th>
                   <th>{new Date(project.creationDate).toLocaleDateString()}</th>
-                  <th className="">
+
+                  <th className=' d-flex justify-content-around '>
                     <CiEdit
-                      fontSize={30}
-                      className="text-warning cursor-pointer"
+                      fontSize={24}
+                      className='text-warning cursor-pointer'
                     />
                     <MdDeleteOutline
-                      fontSize={30}
-                      className="text-danger cursor-pointer"
+                      fontSize={24}
+                      className='text-danger cursor-pointer'
+
                     />
+                    <Link to={`/dashboard/projectde/${project.id}`}>
+                    <FaEye
+                      fontSize={24}
+                      className='text-info cursor-pointer'
+                    /></Link>
                   </th>
                 </tr>
               )}

@@ -6,7 +6,7 @@ interface State {
   projects: Project[]
   managerProjects: Project[]
   employeeProjects: Project[]
-  selectedProject: object
+  selectedProject: Project
   loading: boolean
   pageNumber: number
   pageSize: number
@@ -30,7 +30,13 @@ export const initialState: State = {
   projects: [],
   managerProjects: [],
   employeeProjects: [],
-  selectedProject: {},
+  selectedProject: {
+    id: 0,
+    title: "",
+    description: "",
+    creationDate: "",
+    modificationDate: ""
+  },
   loading: false,
   // Pagination and search filter for all projects in the systme
   pageNumber: 1,

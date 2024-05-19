@@ -158,3 +158,12 @@ button[type="submit"]:hover {
   background-color: #ff9800 !important;
 }
 /* -----------------  Elment and hover ------------------------ */
+
+/* ---------------- custom width and height ------------------ */
+.w-0 {
+  width: 0;
+}
+.h-0 {
+  height: 0;
+}
+/* ---------------- custom width and height ------------------ */
