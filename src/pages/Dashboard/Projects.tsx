@@ -14,7 +14,7 @@ import { MdDeleteOutline } from 'react-icons/md'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 import deleteAvatar from '../../assets/images/no-data.png'
-import { useNavigate } from 'react-router-dom'
+
 
 
 
