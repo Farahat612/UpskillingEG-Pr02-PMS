@@ -1,9 +1,11 @@
 import avatar from '../../assets/images/avatar.png'
 import logo from '../../assets/images/nav-logo.png'
+import { useAuthContext } from '../../contexts/global/AuthContext'
 
 const Navbar = () => {
+  const { userData } = useAuthContext()
   return (
-    <nav className='navbar navbar-expand-lg bg-body-tertiary text-end'>
+    <nav className='navbar navbar-expand-lg text-end border-bottom'>
       <div className='container-fluid'>
         <div>
           <img src={logo} alt='' />
@@ -21,14 +23,19 @@ const Navbar = () => {
         </button>
         <div className='collapse navbar-collapse' id='navbarSupportedContent'>
           <ul className='navbar-nav ms-auto mb-2 mb-lg-0'>
-            <li className='nav-item'>
-              <a className='nav-link active' aria-current='page'>
-                <img src={avatar} alt='' className='me-1' />
-                Hello Name
-                <i className='fa-solid fa-chevron-down m-sm-1 ms-lg-2'></i>
-                <i className='fa-regular fa-bell ms-lg-2 m-sm-1'></i>
-              </a>
-            </li>
+            <i className='fa-solid fa-chevron-down m-sm-1 ms-lg-2 d-flex border-start ps-3'>
+              <img
+                src={avatar}
+                alt=''
+                className='me-1 mt-1 '
+                width={40}
+                height={40}
+              />
+              <div>
+                <p className=' text-start m-0'>Hello {userData.userName}</p>
+                <p>{userData.userEmail}</p>
+              </div>
+            </i>
           </ul>
         </div>
       </div>

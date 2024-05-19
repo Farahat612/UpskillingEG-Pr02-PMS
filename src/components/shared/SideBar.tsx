@@ -1,17 +1,16 @@
-import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar'
-import { Link } from 'react-router-dom'
-import { IoHomeSharp } from 'react-icons/io5'
-import { FaUsers, FaTasks, FaSignOutAlt, FaKey } from 'react-icons/fa'
-import { GrProjects } from 'react-icons/gr'
-import {
-  MdOutlineKeyboardArrowLeft,
-  MdKeyboardArrowRight,
-} from 'react-icons/md'
-import { IoClose } from 'react-icons/io5'
 import { Modal } from 'react-bootstrap'
+import { FaKey, FaSignOutAlt, FaTasks, FaUsers } from 'react-icons/fa'
+import { GrProjects } from 'react-icons/gr'
+import { IoClose, IoHomeSharp } from 'react-icons/io5'
+import {
+  MdKeyboardArrowRight,
+  MdOutlineKeyboardArrowLeft,
+} from 'react-icons/md'
+import { Menu, MenuItem, Sidebar } from 'react-pro-sidebar'
+import { Link } from 'react-router-dom'
 
-import { useState, useContext } from 'react'
-import { AuthContext, AuthContextType } from '../../contexts/AuthContext'
+import { useState } from 'react'
+import { useAuthContext } from '../../contexts/global/AuthContext'
 import ChangePass from './ChangePass'
 import './styles/Sidebar.css'
 
@@ -21,7 +20,7 @@ const SideBar = () => {
     setIsCollapsed(!isCollapsed)
   }
 
-  const { logOut } = useContext(AuthContext) as AuthContextType
+  const { logOut } = useAuthContext()
 
   // change password modal
   const [show, setShow] = useState(false)

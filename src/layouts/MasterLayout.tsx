@@ -4,14 +4,14 @@ import { Outlet } from 'react-router-dom'
 const MasterLayout = () => {
   return (
     <div>
-      <div className='Navbar bg-success'>
+      <div className='Navbar'>
         <Navbar />
       </div>
       <div className=' d-flex '>
         <div className=''>
           <SideBar />
         </div>
-        <div className='content w-75 pt-5'>
+        <div className='content w-100 bg-light'>
           <Outlet />
         </div>
       </div>
