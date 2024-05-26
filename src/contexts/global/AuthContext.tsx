@@ -26,7 +26,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         setUserData(decodedToken)
       } else {
         setIsLoggedIn(false)
-        setUserData(false)
+        setUserData({})
       }
     }
     setLoading(false)

@@ -31,9 +31,11 @@ import { RouteGuard } from './components/shared'
 import { AuthLayoutWrapper, MasterLayout } from './layouts'
 import Notfound from './pages/Notfound/Notfound'
 
+import { LoadingScreen } from './components/shared'
+
 function App() {
   // auth context
-  const { loggedIn, saveLoginData } = useAuthContext()
+  const { loggedIn, saveLoginData, loading } = useAuthContext()
   useEffect(() => {
     // console.log('App mounted', loggedIn)
 
@@ -127,6 +129,14 @@ function App() {
       ],
     },
   ])
+
+  if (loading) {
+    return (
+      <div className='w-100 h-100 my-5 py-5 d-flex flex-column justify-content-center align-items-center gap-3'>
+        <LoadingScreen />
+      </div>
+    )
+  }
 
   return (
     <>

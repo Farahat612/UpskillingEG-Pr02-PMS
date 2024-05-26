@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from 'react'
 import { apiProtected } from '../../utils/api'
+import { useAuthContext } from './AuthContext'
 
 export type ListsForFormsContextType = {
   allProjects: any[]
@@ -13,6 +15,9 @@ export const ListsForFormsContext = createContext({})
 const ListsForFormsProvider = ({ children }: { children: React.ReactNode }) => {
   const [allProjects, setAllProjects] = useState([])
   const [allUsers, setAllUsers] = useState([])
+
+  const { userData } = useAuthContext()
+  const isAdmin = userData.userGroup === 'Manager'
 
   // Function for fetching all the lists that are needed for forms
   const fetchAllProjects = async () => {
@@ -45,8 +50,10 @@ const ListsForFormsProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
-    fetchAllProjects()
-    fetchAllUsers()
+    if (isAdmin) {
+      fetchAllProjects()
+      fetchAllUsers()
+    }
   }, [])
 
   return (

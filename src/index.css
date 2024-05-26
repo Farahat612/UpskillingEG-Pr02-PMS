@@ -12,12 +12,22 @@ input:-webkit-autofill:active {
   cursor: pointer;
 }
 
+.cursor-draggable {
+  cursor: grab;
+}
+.cursor-dragging {
+  cursor: grabbing;
+}
+
 .text-main {
   color: #ef9b28 !important;
 }
 
 .thead-color {
   background-color: rgba(49, 89, 81, 0.9) !important;
+}
+.orange-bg {
+  background: rgba(239, 155, 40, 1);
 }
 .w-40 {
   width: 47%;
@@ -181,4 +191,14 @@ form .field-name {
   flex-grow: 1;
   border-radius: 1rem;
   background-color: white;
+}
+
+
+
+/* --------------------  DND Styles -------------------- */
+.hoverdOverList {
+  outline: 2px solid #ef9b28;
+  outline-offset: -2px;
+  min-height: 20rem;
+  transition: all 0.3s;
 }

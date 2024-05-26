@@ -20,8 +20,7 @@ const SideBar = () => {
     setIsCollapsed(!isCollapsed)
   }
 
-  const { logOut } = useAuthContext()
-
+  const { logOut, userData } = useAuthContext()
   // change password modal
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -45,18 +44,24 @@ const SideBar = () => {
             >
               Home
             </MenuItem>
-            <MenuItem
-              icon={<FaUsers />}
-              component={<Link to='/dashboard/users' />}
-            >
-              Users
-            </MenuItem>
-            <MenuItem
-              icon={<GrProjects />}
-              component={<Link to='/dashboard/projects' />}
-            >
-              Projects
-            </MenuItem>
+
+            {userData.userGroup !== 'Employee' && (
+              <>
+                <MenuItem
+                  icon={<FaUsers />}
+                  component={<Link to='/dashboard/users' />}
+                >
+                  Users
+                </MenuItem>
+                <MenuItem
+                  icon={<GrProjects />}
+                  component={<Link to='/dashboard/projects' />}
+                >
+                  Projects
+                </MenuItem>
+              </>
+            )}
+
             <MenuItem
               icon={<FaTasks />}
               component={<Link to='/dashboard/tasks' />}

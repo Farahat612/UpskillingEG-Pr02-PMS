@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react-refresh/only-export-components */
 import { createContext, useContext, useEffect, useState } from 'react'
 import { UserStats, TasksStats } from '../../types/interfaces'
 import { apiProtected } from '../../utils/api'
+import { useAuthContext } from './AuthContext'
 
 type DashboardContextType = {
   tasksStats: TasksStats
@@ -16,6 +18,8 @@ export const useDashboardContext = () => {
 
 // provider
 const DashboardProvider = ({ children }: { children: React.ReactNode }) => {
+  const { userData } = useAuthContext()
+  const isAdmin = userData.userGroup === 'Manager'
   // states
   const [userStats, setUserStats] = useState<UserStats>({
     activatedEmployeeCount: 0,
@@ -48,8 +52,10 @@ const DashboardProvider = ({ children }: { children: React.ReactNode }) => {
   }
 
   useEffect(() => {
-    fetchUserStats()
-    fetchTasksStats()
+    if (isAdmin) {
+      fetchUserStats()
+      fetchTasksStats()
+    }
   }, [])
 
   return (
