@@ -1,5 +1,4 @@
 
-https://github.com/user-attachments/assets/0fe713ac-7ac8-4acc-94cf-3b12362e5ae5
 # Project Management System (PMS)
 
 ## Introduction
